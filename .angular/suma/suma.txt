@@ -1,0 +1,426 @@
+
+using div
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <!-- Left column content here -->
+      <div class="card">
+        <img src="assets/leftpreview.png" class="img-fluid" [style]="{ 'background-color': 'yellow', 'object-fit': 'contain', 'max-width': '100%' }" alt="Your image description">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-4">
+      <!-- Right column content here -->
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">sign up</h5>
+          <div class="row">
+            <div class="col-md-6 offset-md-3 p-4">
+              <h2> Doctor Registration</h2>
+              <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter name">
+                  <div *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.errors" class="text-danger">
+                      <div *ngIf="signupForm.get('name')?.errors?.['required']">Name is required.</div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" formControlName="email" id="email" placeholder="Enter email" inputmode="email">
+                  <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors" class="text-danger">
+                    <div *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</div>
+                    <div *ngIf="signupForm.get('email')?.errors?.['email']">Invalid email format.</div>
+                  </div>
+                
+                </div>
+      
+                <!-- phone -->
+           <div class="form-group">
+             <label for="phone">Phone Number</label>
+                 <div class="input-group">
+                   <div class="input-group-prepend">
+            <select class="custom-select ms-auto p-2" [(ngModel)]="selectedCountry">
+              <option *ngFor="let country of countries" [value]="country">{{ country.name }} (+{{ country.code }})</option>
+            </select>
+          </div>
+          <input type="tel" class="form-control" formControlName="phone" id="phone" placeholder="Enter phone number" pattern="[0-9]*" inputmode="numeric">
+        </div>
+        <div *ngIf="signupForm.get('phone')?.touched && signupForm.get('phone')?.errors" class="text-danger">
+          <div *ngIf="signupForm.get('phone')?.errors?.['required']">Phone number is required.</div>
+          <div *ngIf="signupForm.get('phone')?.errors?.['pattern']">Invalid phone number format.</div>
+          <div *ngIf="signupForm.get('phone')?.value && signupForm.get('phone')?.value.length !== 10">Phone number should be 10 digits long.</div>  </div>
+      </div>
+      
+      
+      <!-- phone -->
+                <div class="form-group">
+                  <label for="micr">MICR Registration Number</label>
+                  <input type="text" class="form-control" formControlName="micr" id="micr" placeholder="Enter MICR registration number"  pattern="[0-9]*" inputmode="numeric" >
+                  <div *ngIf="signupForm.get('micr')?.touched && signupForm.get('micr')?.errors" class="text-danger">
+                      <div *ngIf="signupForm.get('micr')?.errors?.['required']">micr is required.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="timezone">Timezone</label>
+                  <select class="form-control" formControlName="timezone" id="timezone">
+                    <option value="">Select timezone</option>
+                    <option value="Asia/Kolkata">Asia/Culcutta</option>
+                    <option value="Europe/London">Europe/London</option>
+                  </select>
+                  <div *ngIf="signupForm.get('timezone')?.touched && signupForm.get('timezone')?.errors" class="text-danger">
+                      <div *ngIf="signupForm.get('timezone')?.errors?.['required']">Timezone is required.</div>
+                    </div>
+                    
+                </div>
+                <button type="submit" class="btn btn-primary mt-3" (click)="onSubmit() ">Submit</button>
+              </form>
+            </div>
+          </div>
+          <!-- <form [formGroup]="signupForm" (ngSubmit)="onSubmit()"> -->
+            <!-- Signup form controls here -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mb-5">
+      <!-- Left column content here -->
+      <div class="card">
+        <img src="assets/leftpreview.png" class="img-fluid" [style]="{ 'background-color': 'yellow', 'object-fit': 'contain', 'max-width': '100%' }" alt="Your image description">
+        <div class="card-body">
+          <!-- <h5 class="card-title">Image Card Title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-">
+      <!-- Right column content here -->
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Sign up </h3>
+              <div class="row">
+                <div class="col-md-7 offset-md-3 p-4">
+                  <h2> Doctor Registration</h2>
+                  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter name">
+                      <div *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.errors" class="text-danger">
+                          <div *ngIf="signupForm.get('name')?.errors?.['required']">Name is required.</div>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" formControlName="email" id="email" placeholder="Enter email" inputmode="email">
+                      <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors" class="text-danger">
+                        <div *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</div>
+                        <div *ngIf="signupForm.get('email')?.errors?.['email']">Invalid email format.</div>
+                      </div>
+                    
+                    </div>
+          
+                    <!-- phone -->
+               <div class="form-group">
+                 <label for="phone">Phone Number</label>
+                     <div class="input-group">
+                       <div class="input-group-prepend">
+                <select class="custom-select ms-auto p-2" [(ngModel)]="selectedCountry">
+                  <option *ngFor="let country of countries" [value]="country">{{ country.name }} (+{{ country.code }})</option>
+                </select>
+              </div>
+              <input type="tel" class="form-control" formControlName="phone" id="phone" placeholder="Enter phone number" pattern="[0-9]*" inputmode="numeric">
+            </div>
+            <div *ngIf="signupForm.get('phone')?.touched && signupForm.get('phone')?.errors" class="text-danger">
+              <div *ngIf="signupForm.get('phone')?.errors?.['required']">Phone number is required.</div>
+              <div *ngIf="signupForm.get('phone')?.errors?.['pattern']">Invalid phone number format.</div>
+              <div *ngIf="signupForm.get('phone')?.value && signupForm.get('phone')?.value.length !== 10">Phone number should be 10 digits long.</div>  </div>
+          </div>
+          
+          
+                           <!-- phone -->
+                    <div class="form-group">
+                      <label for="micr">MICR Registration Number</label>
+                      <input type="text" class="form-control" formControlName="micr" id="micr" placeholder="Enter MICR registration number"  pattern="[0-9]*" inputmode="numeric" >
+                      <div *ngIf="signupForm.get('micr')?.touched && signupForm.get('micr')?.errors" class="text-danger">
+                          <div *ngIf="signupForm.get('micr')?.errors?.['required']">micr is required.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="timezone">Timezone</label>
+                      <select class="form-control" formControlName="timezone" id="timezone">
+                        <option value="">Select timezone</option>
+                        <option value="Asia/Kolkata">Asia/Culcutta</option>
+                        <option value="Europe/London">Europe/London</option>
+                      </select>
+                      <div *ngIf="signupForm.get('timezone')?.touched && signupForm.get('timezone')?.errors" class="text-danger">
+                          <div *ngIf="signupForm.get('timezone')?.errors?.['required']">Timezone is required.</div>
+                        </div>
+                        
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3" (click)="onSubmit() ">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+phone number
+
+<div class="form-group">
+                     <label for="phone">Phone Number</label>
+                       <div class="input-group">
+                       <div class="input-group-prepend">
+                <select class="custom-select ms-auto p-2" [(ngModel)]="selectedCountry">
+                  <option *ngFor="let country of countries" [value]="country">{{ country.name }} (+{{ country.code }})</option>
+                </select>
+              </div>
+              <input type="tel" class="form-control" formControlName="phone" id="phone" placeholder="Enter phone number" pattern="[0-9]*" inputmode="numeric">
+            </div>
+            <div *ngIf="signupForm.get('phone')?.touched && signupForm.get('phone')?.errors" class="text-danger">
+              <div *ngIf="signupForm.get('phone')?.errors?.['required']">Phone number is required.</div>
+              <div *ngIf="signupForm.get('phone')?.errors?.['pattern']">Invalid phone number format.</div>
+              <div *ngIf="signupForm.get('phone')?.value && signupForm.get('phone')?.value.length !== 10">Phone number should be 10 digits long.</div>  </div>
+          </div>
+          
+
+
+card image half
+  <!-- <div class="col-md-6 mb-4" >
+       
+      <div class="card"">
+        <img src="assets/leftpreview.png" class="img-fluid"  alt="Your image description">
+        <div class="card-body">
+           <h5 class="card-title">Image Card Title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+        </div>
+      </div>
+    </div> -->
+
+
+phone number with country code
+
+   <!-- phone -->
+                    <div class="form-group">
+                      <label for="phone">Phone Number</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+<!-- /                           <select class="custom-select ms-auto p-2" formControlName="selectedCountry" [(ngModel)]="selectedCountry" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let country of countries" [value]="country">{{ country.name }} (+{{ country.code }})</option>
+                          </select> -->
+                        </div>
+                        <input type="tel" class="form-control" formControlName="phone" id="phone" placeholder="Enter phone number">
+                      </div>
+                      <div *ngIf="signupForm.get('phone')?.touched && signupForm.get('phone')?.errors" class="text-danger">
+                        <div *ngIf="signupForm.get('phone')?.errors?.['required']">Phone number is required.</div>
+                        <div *ngIf="signupForm.get('phone')?.errors?.['pattern']">Invalid phone number format.</div>
+                        <div *ngIf="signupForm.get('phone')?.errors?.['invalidPhone']">Invalid phone number.</div>
+                      </div>
+                    </div>
+
+for unique email
+
+https://stackoverflow.com/questions/49484288/username-already-exists-please-check-for-available-options-during-sign-up check this link
+
+
+
+valid phone number
+// next: response => {
+        
+  //     console.log(response);
+  //     this.toastr.success('Doctor signed up successfully!', 'Success');
+  //     this.signupForm.reset();
+  //      this.submitted = false;
+  //   },
+  //   error: error => {
+  //     console.log(error.error);
+  //     if (error.error && error.error.message && error.error.message.includes('E11000 duplicate key error collection: docServer.doctorsignups index: phonenumber_1')) {
+  //       if (error.error.keyPattern && error.error.keyPattern.phonenumber === 1) {
+  //         this.signupForm.get('phone')?.setErrors({'duplicate': true});
+  //         this.toastr.error('Phone number already exists!', 'Error');
+  //       }
+  //     }
+  //     else if (error.error && error.error.message && error.error.message.includes('E11000 duplicate key error collection: docServer.doctorsignups index: MCIRegistrationNumber_1')) {
+  //       if (error.error.keyValue.MCIRegistrationNumber === this.micr) {
+  //         this.signupForm.get('micr')?.setErrors({'duplicate': true});
+  //         this.toastr.error('MCI registration number already exists!', 'Error');
+  //       }
+  //     } else {
+  //       this.toastr.error('An error occurred while signing up!', 'Error');
+  //     }
+  //   }
+    
+  // });
+  // ngOnInit(): void {
+  //   this.patientID = this.activedRoute.snapshot.params['patientID'];
+  //   this.patientID = this.activedRoute.snapshot.params['patientID'];
+  //   this.fetchAllHealthStatisticks();
+  //   this.doctorDetails = this.profileService.getDoctorDetails();
+  //   this.getpatients();
+  //   this.getAppointmentDetails();
+
+  //   let curDate: any = new Date();
+  //   curDate = Date.parse(curDate);
+  //   let randomNumber = Math.floor(Math.random() * 1000000) + 1;
+  //   this.newPrescriptionDetails.prescriptionPdfId = curDate + randomNumber;
+  // }
+  // ngOnInit(): void {
+  //   this.patientID = this.activedRoute.snapshot.params['patientID'];
+  //   this.fetchAllHealthStatisticks();
+  //   this.doctorDetails = this.profileService.getDoctorDetails();
+  //   this.getpatients();
+  //   this.getAppointmentDetails();
+  
+  //   let curDate: any = new Date();
+  //   curDate = Date.parse(curDate);
+  //   let randomNumber = Math.floor(Math.random() * 1000000) + 1;
+  //   this.newPrescriptionDetails.prescriptionPdfId = curDate + randomNumber;
+  
+  //   let appointment_id = this.activedRoute.snapshot.params['appointmentID'];
+  
+  //   // Check if prescription exists for the appointment
+  //   this.backendService.getAppointmentDetails(appointment_id).subscribe(result => {
+  //     if (result.success && result.data && result.data.length > 0) {
+  //       const appointmentId = result.data[0].AppointmentId;
+  //       this.backendService.getPrescriptionDetails(appointmentId).subscribe(result => {
+  //         if (result.success) {
+  //           // Prescription details found, update prescription area and related variables
+  //           console.log(result);
+  //           this.isPrescriptionSubmitted = true;
+  //           this.prescriptionForm.patchValue(result.data.prescriptionDetails);
+  //           this.newPrescriptionDetails = result.data.newPrescriptionDetails;
+  //         } else {
+  //           // Prescription details not found, treat as a new prescription
+  //           this.isPrescriptionSubmitted = false;
+  //           this.prescriptionForm.reset();
+  //         }
+  //       });
+  //     } else {
+  //       // No appointment found, treat as a new prescription
+  //       this.isPrescriptionSubmitted = false;
+  //       this.prescriptionForm.reset();
+  //     }
+  //   });
+  // }//   ngOnInit(): void {
+//     this.patientID = this.activedRoute.snapshot.params['patientID'];
+//     this.fetchAllHealthStatisticks();
+//     this.doctorDetails = this.profileService.getDoctorDetails();
+//     this.getpatients();
+//     this.getAppointmentDetails();
+
+//     let curDate: any = new Date();
+//     curDate = Date.parse(curDate);
+//     let randomNumber = Math.floor(Math.random() * 1000000) + 1;
+//     this.newPrescriptionDetails.prescriptionPdfId = curDate + randomNumber;
+
+//     let appointment_id = this.activedRoute.snapshot.params['appointmentID'];
+
+//     // Check if prescription exists for the appointment
+//     this.backendService.appointmentId(appointment_id).subscribe(result => {
+//         if (result.success && result.data && result.data.length > 0) {
+//             const appointmentId = result.data[0].AppointmentId;
+//             this.backendService.getPrescriptionDetails(appointmentId).subscribe(prescriptionResult => {
+//                 if (prescriptionResult.success) {
+//                     // Prescription details found, update prescription area and related variables
+//                     console.log(prescriptionResult);
+//                     this.isPrescriptionSubmitted = true;
+//                     this.prescriptionForm.patchValue(prescriptionResult.data.prescriptionDetails);
+//                     this.newPrescriptionDetails = prescriptionResult.data.newPrescriptionDetails;
+
+//                     // Get medication details from prescription
+//                     const medicationObj = prescriptionResult.data.prescriptionDetails.medicationObj;
+//                     if (medicationObj && medicationObj.length > 0) {
+//                         const medication = medicationObj[0];
+//                         const drugName = medication.Medication;
+//                         const drugDose = medication.drugDose;
+//                         const frequency = medication.frequency;
+//                         console.log(`Drug Name: ${drugName}, Drug Dose: ${drugDose}, Frequency: ${frequency}`);
+//                     }
+//                 } else {
+//                     // Prescription details not found, treat as a new prescription
+//                     this.isPrescriptionSubmitted = false;
+//                     this.prescriptionForm.reset();
+//                 }
+//             });
+//         } else {
+//             // No appointment found, treat as a new prescription
+//             this.isPrescriptionSubmitted = false;
+//             this.prescriptionForm.reset();
+//         }
+//     });
+// }
+
+//   ngOnInit(): void {
+//   this.patientID = this.activedRoute.snapshot.params['patientID'];
+//   this.fetchAllHealthStatisticks();
+//   this.doctorDetails = this.profileService.getDoctorDetails();
+//   this.getpatients();
+//   this.getAppointmentDetails();
+
+//   let curDate: any = new Date();
+//   curDate = Date.parse(curDate);
+//   let randomNumber = Math.floor(Math.random() * 1000000) + 1;
+//   this.newPrescriptionDetails.prescriptionPdfId = curDate + randomNumber;
+
+//   let appointment_id = this.activedRoute.snapshot.params['appointmentID'];
+
+//   // Check if prescription details are stored in the local storage
+//   const prescriptionDetails = localStorage.getItem(`prescription_${appointment_id}`);
+//   if (prescriptionDetails) {
+//     // Prescription details found in local storage, update prescription area and related variables
+//     console.log(prescriptionDetails);
+//     this.isPrescriptionSubmitted = true;
+//     this.prescriptionForm.patchValue(JSON.parse(prescriptionDetails).prescriptionDetails);
+//     this.newPrescriptionDetails = JSON.parse(prescriptionDetails).newPrescriptionDetails;
+//   } else {
+//     // Prescription details not found in local storage, fetch from server
+//     this.backendService.appointmentId(appointment_id).subscribe(result => {
+//       if (result.success && result.data && result.data.length > 0) {
+//         const appointmentId = result.data[0].AppointmentId;
+//         this.backendService.getPrescriptionDetails(appointmentId).subscribe(result => {
+//           if (result.success) {
+//             // Prescription details found, update prescription area and related variables
+//             console.log(result);
+//             this.isPrescriptionSubmitted = true;
+//             this.prescriptionForm.patchValue(result.data.prescriptionDetails);
+//             this.newPrescriptionDetails = result.data.newPrescriptionDetails;
+//             // Store the prescription details in local storage
+//             localStorage.setItem(`prescription_${appointment_id}`, JSON.stringify(result.data));
+//           } else {
+//             // Prescription details not found, treat as a new prescription
+//             this.isPrescriptionSubmitted = false;
+//             this.prescriptionForm.reset();
+//           }
+//         });
+//       } else {
+//         // No appointment found, treat as a new prescription
+//         this.isPrescriptionSubmitted = false;
+//         this.prescriptionForm.reset();
+//       }
+//     });
+//   }
+// }
